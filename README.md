@@ -1,6 +1,6 @@
-#1º Trabalho Prático de SCC 650- Computação Gráfica
+# 1º Trabalho Prático de SCC 650- Computação Gráfica
 
-##Data entrega: 26/04/2017
+## Data entrega: 26/04/2017
 
 Implementação do algoritmo de preenchimento de polígonos que utiliza a coerência  de arestas usando Java.
 
