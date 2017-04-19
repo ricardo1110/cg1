@@ -1,0 +1,39 @@
+# NetBeans
+test
+build
+build.xml
+dist
+private
+manifest.mf
+nbproject/
+
+# Compilados #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Pacotes #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs #
+######################
+*.log
+
+# Sistema Operacional #
+######################
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
