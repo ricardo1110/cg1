@@ -1,24 +1,21 @@
 package scanline;
 
-import java.awt.Point;
 import java.util.ArrayList;
 
 public class Preenchimento {
-    private final ArrayList<Point> polygon; 
     private final MetaDataPoligonos polig;
     
     public Preenchimento(MetaDataPoligonos polig) {
         this.polig = polig;
-        this.polygon = polig.coordenadas;
     }
     
     public ArrayList<Aresta> createEdges() {
         ArrayList<Aresta> sortedEdges = new ArrayList<Aresta>();
-        for (int i = 0; i < polygon.size() - 1; i++) {
-            if (polygon.get(i).y < polygon.get(i+1).y) {
-                sortedEdges.add(new Aresta(polygon.get(i), polygon.get(i+1)));
+        for (int i = 0; i < this.polig.coordenadas.size() - 1; i++) {
+            if (this.polig.coordenadas.get(i).y < this.polig.coordenadas.get(i+1).y) {
+                sortedEdges.add(new Aresta(this.polig.coordenadas.get(i), this.polig.coordenadas.get(i+1)));
             } else {
-                sortedEdges.add(new Aresta(polygon.get(i+1), polygon.get(i)));
+                sortedEdges.add(new Aresta(this.polig.coordenadas.get(i+1), this.polig.coordenadas.get(i)));
             }
         }
         return sortedEdges;
@@ -73,9 +70,9 @@ public class Preenchimento {
             
             // Ordenando as coordenadas X da menor para a maior
             int swaptmp;
-            for (int i = 0; i < list.size(); i++) {
-                for (int j = 0; j < list.size() - 1; j++) {
-                    if (list.get(j) > list.get(j+1)) {
+            for(int i = 0; i < list.size(); i++) {
+                for(int j = 0; j < list.size() - 1; j++) {
+                    if(list.get(j) > list.get(j+1)) {
                         swaptmp = list.get(j);
                         list.set(j, list.get(j+1));
                         list.set(j+1, swaptmp);
@@ -85,13 +82,13 @@ public class Preenchimento {
             
             this.polig.g.setColor(this.polig.cor);
 
-            if (list.size() < 2 || list.size() % 2 != 0) {
+            if(list.size() < 2 || list.size() % 2 != 0) {
                 System.out.println("This should never happen!");
                 continue;
             }
              
             // Preenche o poligono desenhando as linhas horizontais
-            for (int i = 0; i < list.size(); i+=2) {
+            for(int i = 0; i < list.size(); i+=2) {
                 this.polig.g.drawLine(list.get(i), scanline, list.get(i+1), scanline);
             }
         }
