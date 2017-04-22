@@ -2,6 +2,10 @@ package scanline;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @author ricardo
+ */
 public class Preenchimento {
     private final MetaDataPoligonos polig;
     
