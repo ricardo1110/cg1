@@ -7,7 +7,6 @@ package scanline;
 
 import java.awt.Graphics;
 import java.awt.event.MouseListener;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 

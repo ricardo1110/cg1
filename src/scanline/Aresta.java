@@ -1,6 +1,7 @@
 package scanline;
 
 import java.awt.Point;
+
 /**
  *
  * @author ricardo
