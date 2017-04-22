@@ -28,6 +28,7 @@ public class Scanline extends JPanel{
         frame.getContentPane().add(new Scanline());
         frame.addMouseListener(mouse);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+        frame.setTitle("Janela Principal - Desenhe o poligono");
         
         ButtonWindow buttonScreen = new ButtonWindow(polig, (ScreenFrame) frame);
         buttonScreen.setVisible(true);

@@ -45,6 +45,7 @@ public class ButtonWindow extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Açoes");
         setPreferredSize(new java.awt.Dimension(300, 400));
         setResizable(false);
 
@@ -97,7 +98,7 @@ public class ButtonWindow extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -108,7 +109,9 @@ public class ButtonWindow extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,7 +126,7 @@ public class ButtonWindow extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "O poligono nao foi fechado");
             return;
         }
-        this.polig.cor = JColorChooser.showDialog(null, "JColorChooser Sample", this.polig.cor);
+        this.polig.cor = JColorChooser.showDialog(null, "Escolha a cor de preenchimento", this.polig.cor);
         Preenchimento pre = new Preenchimento(polig);
         pre.preencher();
     }//GEN-LAST:event_jButton1MouseClicked
