@@ -9,7 +9,7 @@ public class Preenchimento {
         this.polig = polig;
     }
     
-    public ArrayList<Aresta> createEdges() {
+    private ArrayList<Aresta> criarArestas() {
         ArrayList<Aresta> sortedEdges = new ArrayList<Aresta>();
         for(int i = 0; i < this.polig.coordenadas.size() - 1; i++) {
             if(this.polig.coordenadas.get(i).y < this.polig.coordenadas.get(i+1).y) {
@@ -22,8 +22,8 @@ public class Preenchimento {
     }
 
      
-    public void fill() {
-        ArrayList<Aresta> sortedEdges = this.createEdges();
+    public void preencher() {
+        ArrayList<Aresta> sortedEdges = this.criarArestas();
          
         //Ordena todos as arestas da menor para a maior coordenada y (Usando BubbleSort mesmo por enquanto :/)
         Aresta tmp;

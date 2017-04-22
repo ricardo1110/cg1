@@ -125,7 +125,7 @@ public class ButtonWindow extends javax.swing.JFrame {
         }
         this.polig.cor = JColorChooser.showDialog(null, "JColorChooser Sample", this.polig.cor);
         Preenchimento pre = new Preenchimento(polig);
-        pre.fill();
+        pre.preencher();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
