@@ -59,7 +59,7 @@ public class Preenchimento {
                     lista.add((int) arestasOrdenadas.get(i).curX);
                 }
                 
-                // Intersecçao da scanline com uma aresta
+                // Intersecçao da linha escaneada com uma aresta
                 if(scanline > arestasOrdenadas.get(i).p1.y && scanline < arestasOrdenadas.get(i).p2.y) {
                     arestasOrdenadas.get(i).atualizar();
                     lista.add((int) arestasOrdenadas.get(i).curX);
@@ -69,7 +69,7 @@ public class Preenchimento {
             
             // Ordenando as coordenadas X da menor para a maior
             int buffInt;
-            for(int i = 0; i < lista.size(); i++) {
+            for (Integer item : lista) {
                 for(int j = 0; j < lista.size() - 1; j++) {
                     if(lista.get(j) > lista.get(j+1)) {
                         buffInt = lista.get(j);
