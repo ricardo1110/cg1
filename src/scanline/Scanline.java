@@ -5,6 +5,7 @@
  */
 package scanline;
 
+import java.awt.Graphics;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,8 +21,11 @@ public class Scanline extends JPanel{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        MetaDataPoligonos polig = new MetaDataPoligonos();
+        Graphics g = null;
+        
         MouseListener mouse = new MouseAction();
-        JFrame frame = new ScreenFrame(800, 400);
+        JFrame frame = new ScreenFrame(800, 400, polig, g);
         frame.getContentPane().add(new Scanline());
         frame.addMouseListener(mouse);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
