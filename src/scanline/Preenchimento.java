@@ -91,7 +91,7 @@ public class Preenchimento {
 //            }
              
             // Preenche o poligono desenhando as linhas horizontais
-            for(int i = 0; i < lista.size(); i+=2) {
+            for(int i = 0; i < lista.size()-1; i+=2) {
                 this.polig.g.drawLine(lista.get(i), scanline, lista.get(i+1), scanline);
             }
         }
