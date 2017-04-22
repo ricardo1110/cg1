@@ -22,8 +22,12 @@ public class ScreenFrame extends JFrame{
     BufferedImage img;
     Point pontoInicial;
     int erro = 5;
-    public ScreenFrame(int width, int height){
-        this.setSize(800, 400);
+    MetaDataPoligonos polig;
+    
+    public ScreenFrame(int width, int height, MetaDataPoligonos polig, Graphics g){
+        this.setSize(width, height);
+        this.polig = polig;
+        this.g = g;
         arestas = new ArrayList();
         img = new BufferedImage(width,height, BufferedImage.TYPE_INT_RGB );
         gerarImagem(width,height);
@@ -41,6 +45,10 @@ public class ScreenFrame extends JFrame{
     //indexa as novas arestas na lista e desenha cada segmento
     public void IndexPoint(Point p){
         int i;
+        
+        this.polig.coordenadas.add(p);
+        this.polig.numVertice++;
+        
         if(arestas.size() >= 1){
             if(aproxFechamento(p)){                         //substitui ponto clicado pelo 1ro, fechando o polígono
                 System.out.println("poligono fechado");
@@ -51,6 +59,11 @@ public class ScreenFrame extends JFrame{
             System.out.println("Lado:" +arestas.get(i-1)+" "+arestas.get(i));
             gerarAresta(arestas.get(i-1),arestas.get(i),0);
             paintComponents(g);
+            if(aproxFechamento(p)) {
+                 Preenchimento pre = new Preenchimento(polig, g);
+                pre.fill();
+            }
+            
         }else{
             System.out.println("primeira aresta encontrada");
             this.pontoInicial = p;
@@ -85,6 +98,8 @@ public class ScreenFrame extends JFrame{
         int y1 = p1.y;
         int x2 = p2.x;
         int y2 = p2.y;
+        
+        this.polig.numAresta++;
         
         line(x1,y1,x2,y2,0);
 
