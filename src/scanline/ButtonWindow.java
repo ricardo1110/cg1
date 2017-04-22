@@ -136,6 +136,7 @@ public class ButtonWindow extends javax.swing.JFrame {
         this.frame.img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         this.frame.gerarImagem(width, height);
         this.frame.repaint();
+        this.frame.setFechado();
         this.polig.reset();
     }//GEN-LAST:event_jButton2MouseClicked
 
