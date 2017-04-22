@@ -25,12 +25,15 @@ public class Scanline extends JPanel{
         Graphics g = null;
         
         MouseListener mouse = new MouseAction();
-        JFrame frame = new ScreenFrame(800, 400, polig, g);
+        JFrame frame = new ScreenFrame(800, 400, polig);
         frame.getContentPane().add(new Scanline());
         frame.addMouseListener(mouse);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+        
+        ButtonWindow buttonScreen = new ButtonWindow(polig, (ScreenFrame) frame);
+        buttonScreen.setVisible(true);
+        
+        frame.setLocation(buttonScreen.getX() + buttonScreen.getWidth(), buttonScreen.getY());
         frame.setVisible(true);
-        JButton fecharPolig = new JButton("Fechar Poligono"); //facilitar fechamento, no momento: usa aprox. ao ponto inicial (10px)
-        JButton mudaCor = new JButton("Mudar Cor");            //escolher outras cores
     }    
 }

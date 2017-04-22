@@ -17,20 +17,24 @@ import javax.swing.JFrame;
  * @author afonso
  */
 public class ScreenFrame extends JFrame{
-    ArrayList<Point> arestas;
-    Graphics g;
+    public ArrayList<Point> arestas;
+//    Graphics g;
     BufferedImage img;
     Point pontoInicial;
     int erro = 5;
-    MetaDataPoligonos polig;
+    private final MetaDataPoligonos polig;
+    private boolean fechado;
     
-    public ScreenFrame(int width, int height, MetaDataPoligonos polig, Graphics g){
+    public ScreenFrame(int width, int height, MetaDataPoligonos polig){
         this.setSize(width, height);
         this.polig = polig;
-        this.g = g;
         arestas = new ArrayList();
         img = new BufferedImage(width,height, BufferedImage.TYPE_INT_RGB );
         gerarImagem(width,height);
+    }
+    
+    public boolean isFechado() {
+        return fechado;
     }
     
     //Verifica se o ponto está próximo o suficiente do original para fechar o polígono
@@ -53,34 +57,34 @@ public class ScreenFrame extends JFrame{
             if(aproxFechamento(p)){                         //substitui ponto clicado pelo 1ro, fechando o polígono
                 System.out.println("poligono fechado");
                 p = pontoInicial;
+                this.fechado = true;
+            } else {
+                this.fechado = false;
             }
             arestas.add(p);
             i = arestas.size() - 1;
             System.out.println("Lado:" +arestas.get(i-1)+" "+arestas.get(i));
             gerarAresta(arestas.get(i-1),arestas.get(i),0);
-            paintComponents(g);
-            if(aproxFechamento(p)) {
-                 Preenchimento pre = new Preenchimento(polig, g);
-                pre.fill();
-            }
+            paintComponents(this.polig.g);
             
         }else{
             System.out.println("primeira aresta encontrada");
             this.pontoInicial = p;
             arestas.add(p);
-            g = this.getGraphics();
+            this.polig.g = this.getGraphics();
             this.write_pixel(p.x, p.y, 0);
-            this.paintComponents(g);
+            this.paintComponents(this.polig.g);
         }
         System.out.println("Aresta Captada:" + p); 
     }
 
     @Override
     public void paintComponents(Graphics grphcs) {
-        g.drawImage(img, WIDTH, WIDTH, this);
+        super.paintComponents(grphcs);
+        this.polig.g.drawImage(img, WIDTH, WIDTH, this);
     }
     
-    private void gerarImagem(int width, int height){
+    public void gerarImagem(int width, int height){
         for ( int rc = 0; rc < height; rc++ ) {
           for ( int cc = 0; cc < width; cc++ ) {
             // Set the pixel colour of the image n.b. x = cc, y = rc
