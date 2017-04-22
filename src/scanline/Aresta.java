@@ -26,13 +26,11 @@ public class Aresta {
         curX = p1.x;
     }
     
-    public void desmarcar()
-    {
+    public void desmarcar() {
         curX = p2.x;
     }
     
     public void atualizar() {
         curX += (float)((float)1/(float)m);
-    }
-    
+    } 
 }
