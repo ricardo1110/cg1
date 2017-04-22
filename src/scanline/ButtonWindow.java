@@ -5,7 +5,6 @@
  */
 package scanline;
 
-import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -126,7 +125,7 @@ public class ButtonWindow extends javax.swing.JFrame {
         }
         this.polig.cor = JColorChooser.showDialog(null, "JColorChooser Sample", this.polig.cor);
         Preenchimento pre = new Preenchimento(polig);
-        pre.fill();
+        pre.preencher();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -137,6 +136,7 @@ public class ButtonWindow extends javax.swing.JFrame {
         this.frame.img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         this.frame.gerarImagem(width, height);
         this.frame.repaint();
+        this.frame.setFechado();
         this.polig.reset();
     }//GEN-LAST:event_jButton2MouseClicked
 

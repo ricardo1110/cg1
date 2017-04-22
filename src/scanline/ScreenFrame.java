@@ -37,6 +37,10 @@ public class ScreenFrame extends JFrame{
         return fechado;
     }
     
+    public void setFechado() {
+        this.fechado = false;
+    }
+    
     //Verifica se o ponto está próximo o suficiente do original para fechar o polígono
     //erro atual: 5 px de raio
     private boolean aproxFechamento(Point inicialAproximado){
