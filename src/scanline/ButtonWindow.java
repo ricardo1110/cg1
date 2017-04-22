@@ -12,7 +12,7 @@ import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
-import com.sun.java.swing.plaf.gtk.GTKLookAndFeel;
+import java.awt.Color;
 
 /**
  *
@@ -64,6 +64,7 @@ public class ButtonWindow extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextPane1);
 
         jButton1.setText("Preencher poligono");
+        jButton1.setBackground(Color.lightGray);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -76,6 +77,7 @@ public class ButtonWindow extends javax.swing.JFrame {
         });
 
         jButton2.setText("Limpar a tela");
+        jButton2.setBackground(Color.RED);
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
