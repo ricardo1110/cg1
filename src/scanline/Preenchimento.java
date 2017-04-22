@@ -81,10 +81,10 @@ public class Preenchimento {
             
             this.polig.g.setColor(this.polig.cor);
 
-            if(lista.size() < 2 || lista.size() % 2 != 0) {
-                System.out.println("This should never happen!");
-                continue;
-            }
+//            if(lista.size() < 2 || lista.size() % 2 != 0) {
+//                System.out.println("This should never happen!");
+//                continue;
+//            }
              
             // Preenche o poligono desenhando as linhas horizontais
             for(int i = 0; i < lista.size(); i+=2) {
