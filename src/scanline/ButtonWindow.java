@@ -10,6 +10,9 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import com.sun.java.swing.plaf.gtk.GTKLookAndFeel;
 
 /**
  *
@@ -39,6 +42,8 @@ public class ButtonWindow extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
+        SimpleAttributeSet attr = new SimpleAttributeSet();
+        StyleConstants.setAlignment(attr , StyleConstants.ALIGN_CENTER);
         jTextPane1 = new javax.swing.JTextPane();
         jSeparator1 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
@@ -51,6 +56,9 @@ public class ButtonWindow extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(254, 254, 254));
 
+        jScrollPane1.setBorder(null);
+
+        jTextPane1.setParagraphAttributes(attr,true);
         jTextPane1.setEditable(false);
         jTextPane1.setText("Desenhe o poligono atraves de cliques na Janela Principal e utilize as açoes abaixo");
         jScrollPane1.setViewportView(jTextPane1);

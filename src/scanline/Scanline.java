@@ -7,8 +7,11 @@ package scanline;
 
 import java.awt.Graphics;
 import java.awt.event.MouseListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -30,8 +33,27 @@ public class Scanline extends JPanel{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
         frame.setTitle("Janela Principal - Desenhe o poligono");
         
-        ButtonWindow buttonScreen = new ButtonWindow(polig, (ScreenFrame) frame);
+        //Muda o Look and Feel do Java antes de tornar algo visivel
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Error ex) {} catch (ClassNotFoundException ex) {
+            Logger.getLogger(Scanline.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(Scanline.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Scanline.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(Scanline.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+        
+        ButtonWindow buttonScreen = new ButtonWindow(polig, (ScreenFrame) frame);       
         buttonScreen.setVisible(true);
+        
         
         frame.setLocation(buttonScreen.getX() + buttonScreen.getWidth(), buttonScreen.getY());
         frame.setVisible(true);
