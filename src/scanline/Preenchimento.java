@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public class Preenchimento {
     private final ArrayList<Point> polygon; 
-    private final Graphics g;
+    private final MetaDataPoligonos polig;
     
-    public Preenchimento(MetaDataPoligonos polig, Graphics g) {
+    public Preenchimento(MetaDataPoligonos polig) {
+        this.polig = polig;
         this.polygon = polig.coordenadas;
-        this.g = g;
     }
     
     public ArrayList<Aresta> createEdges() {
@@ -85,7 +85,7 @@ public class Preenchimento {
                 }
             }
             
-            g.setColor(Color.BLACK);
+            this.polig.g.setColor(this.polig.cor);
 
             if (list.size() < 2 || list.size() % 2 != 0) {
                 System.out.println("This should never happen!");
@@ -94,7 +94,7 @@ public class Preenchimento {
              
             // Preenche o poligono desenhando as linhas horizontais
             for (int i = 0; i < list.size(); i+=2) {
-                g.drawLine(list.get(i), scanline, list.get(i+1), scanline);
+                this.polig.g.drawLine(list.get(i), scanline, list.get(i+1), scanline);
             }
         }
     }
