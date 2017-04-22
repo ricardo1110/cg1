@@ -17,7 +17,6 @@ public class MouseAction implements MouseListener{
     public void mouseClicked(MouseEvent e) {
         ScreenFrame s = (ScreenFrame) e.getSource();
         s.IndexPoint(e.getPoint());
-        System.out.println(e.getPoint());
     }
 
     @Override

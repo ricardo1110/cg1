@@ -5,9 +5,8 @@
  */
 package scanline;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.MouseListener;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -21,12 +20,13 @@ public class Scanline extends JPanel{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        JFrame frame = new ScreenFrame();
         MouseListener mouse = new MouseAction();
-        frame.setSize(400, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+        JFrame frame = new ScreenFrame(800, 400);
         frame.getContentPane().add(new Scanline());
         frame.addMouseListener(mouse);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
         frame.setVisible(true);
+        JButton fecharPolig = new JButton("Fechar Poligono"); //facilitar fechamento, no momento: usa aprox. ao ponto inicial (10px)
+        JButton mudaCor = new JButton("Mudar Cor");            //escolher outras cores
     }    
 }
