@@ -54,9 +54,6 @@ public class ScreenFrame extends JFrame{
     public void IndexPoint(Point p){
         int i;
         
-        this.polig.coordenadas.add(p);
-        this.polig.numVertice++;
-        
         if(arestas.size() >= 1){
             if(aproxFechamento(p)){                         //substitui ponto clicado pelo 1ro, fechando o polígono
                 System.out.println("poligono fechado");
@@ -79,6 +76,10 @@ public class ScreenFrame extends JFrame{
             this.write_pixel(p.x, p.y, 0);
             this.paintComponents(this.polig.g);
         }
+        
+        this.polig.coordenadas.add(p);
+        this.polig.numVertice++;
+        
         System.out.println("Aresta Captada:" + p); 
     }
 
