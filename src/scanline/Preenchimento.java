@@ -44,7 +44,7 @@ public class Preenchimento {
         
         // Lista de todos os pontos em que ocorre um corte
         ArrayList<Integer> lista = new ArrayList<Integer>();      
-        // Percorre as linhas dentro do poligono,de baixo para cima
+        // Percorre as arestas do poligono
         for(int scanline = arestasOrdenadas.get(0).p1.y; scanline <= arestasOrdenadas.get(arestasOrdenadas.size()-1).p2.y; scanline++) {           
             lista.clear();
             
