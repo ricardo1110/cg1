@@ -22,11 +22,11 @@ public class Aresta {
         m = (float)((float)(p1.y - p2.y) / (float)(p1.x - p2.x));
     }
     
-    public void marcar() {
+    public void setXIni() {
         curX = p1.x;
     }
     
-    public void desmarcar() {
+    public void setXFim() {
         curX = p2.x;
     }
     
