@@ -13,6 +13,7 @@ public class Preenchimento {
         this.polig = polig;
     }
     
+    //Cria as arestas com as retas partindo da coordenada como menor valorde y
     private ArrayList<Aresta> criarArestas() {
         ArrayList<Aresta> arestasOrdenadas = new ArrayList<Aresta>();
         for(int i = 0; i < this.polig.coordenadas.size() - 1; i++) {
@@ -29,7 +30,7 @@ public class Preenchimento {
     public void preencher() {
         ArrayList<Aresta> arestasOrdenadas = this.criarArestas();
          
-        //Ordena todos as arestas da menor para a maior coordenada y (Usando BubbleSort mesmo por enquanto :/)
+        //Ordena todos as arestas da menor para a maior coordenada y (Usando BubbleSort)
         Aresta buff;
         for(int i = 0; i < arestasOrdenadas.size() - 1; i++) {
             for(int j = 0; j < arestasOrdenadas.size() - 1; j++) {
@@ -43,28 +44,24 @@ public class Preenchimento {
         
         // Lista de todos os pontos em que ocorre um corte
         ArrayList<Integer> lista = new ArrayList<Integer>();      
-        // Percorre as linhas, da menor para a maior
+        // Percorre as linhas dentro do poligono,de baixo para cima
         for(int scanline = arestasOrdenadas.get(0).p1.y; scanline <= arestasOrdenadas.get(arestasOrdenadas.size()-1).p2.y; scanline++) {           
             lista.clear();
             
-            // Percorre todas as arestas para verificar qual e cortada pela linha
+            // Percorre as arestas para verificar em quais coordenadas X as linhas de preenchimento serao desenhadas
             for(int i = 0; i < arestasOrdenadas.size(); i++) {   
-                if(scanline == arestasOrdenadas.get(i).p1.y) {
-                    if(scanline == arestasOrdenadas.get(i).p2.y) {
-                        arestasOrdenadas.get(i).desmarcar();
-                        lista.add((int) arestasOrdenadas.get(i).curX);
-                    } else {
-                        arestasOrdenadas.get(i).marcar();
-                    }
+                if(scanline == arestasOrdenadas.get(i).p1.y && scanline != arestasOrdenadas.get(i).p2.y) { //Inicio da linha
+                    arestasOrdenadas.get(i).setXIni();
+                    continue;
                 }
                 
-                if(scanline == arestasOrdenadas.get(i).p2.y) {
-                    arestasOrdenadas.get(i).desmarcar();
+                if(scanline == arestasOrdenadas.get(i).p2.y) { //Fim da linha
+                    arestasOrdenadas.get(i).setXFim();
                     lista.add((int) arestasOrdenadas.get(i).curX);
+                    continue;
                 }
                 
-                // Intersecçao da linha escaneada com uma aresta
-                if(scanline > arestasOrdenadas.get(i).p1.y && scanline < arestasOrdenadas.get(i).p2.y) {
+                if(scanline > arestasOrdenadas.get(i).p1.y && scanline < arestasOrdenadas.get(i).p2.y) { //Meio da linha
                     arestasOrdenadas.get(i).atualizar();
                     lista.add((int) arestasOrdenadas.get(i).curX);
                 }
@@ -73,7 +70,7 @@ public class Preenchimento {
             
             // Ordenando as coordenadas X da menor para a maior
             int buffInt;
-            for (Integer item : lista) {
+            for (int i = 0; i < lista.size(); i ++) {
                 for(int j = 0; j < lista.size() - 1; j++) {
                     if(lista.get(j) > lista.get(j+1)) {
                         buffInt = lista.get(j);
@@ -84,13 +81,8 @@ public class Preenchimento {
             }
             
             this.polig.g.setColor(this.polig.cor);
-
-//            if(lista.size() < 2 || lista.size() % 2 != 0) {
-//                System.out.println("This should never happen!");
-//                continue;
-//            }
              
-            // Preenche o poligono desenhando as linhas horizontais
+            // Preenche o poligono desenhando as linhas horizontais de x[i] a x[i+2]
             for(int i = 0; i < lista.size()-1; i+=2) {
                 this.polig.g.drawLine(lista.get(i), scanline, lista.get(i+1), scanline);
             }
